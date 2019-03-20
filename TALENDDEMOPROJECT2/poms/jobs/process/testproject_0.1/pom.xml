@@ -48,99 +48,9 @@
       <version>6.0.0</version>
     </dependency>
     <dependency>
-      <groupId>aopalliance</groupId>
-      <artifactId>aopalliance</artifactId>
-      <version>1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>aws-ec2-2.0.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>bcprov-jdk16-1.46</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.4</version>
-    </dependency>
-    <dependency>
       <groupId>dom4j</groupId>
       <artifactId>dom4j</artifactId>
       <version>1.6.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>ec2-2.0.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>gson-2.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>16.0.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.google.inject</groupId>
-      <artifactId>guice</artifactId>
-      <version>3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>guice-assistedinject-3.0</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
-      <version>1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>jclouds-bouncycastle-2.0.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>jclouds-compute-2.0.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>jclouds-core-2.0.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>jclouds-scriptbuilder-2.0.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>jclouds-slf4j-2.0.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>jclouds-sshj-2.0.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>jsr250-api-1.0</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>jsr311-api-1.1.1</artifactId>
-      <version>6.0.0</version>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
@@ -149,37 +59,7 @@
     </dependency>
     <dependency>
       <groupId>org.talend.libraries</groupId>
-      <artifactId>logback-classic-1.0.9</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>logback-core-1.0.9</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
       <artifactId>org.talend.dataquality.parser</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>rocoto-6.1</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>slf4j-api-1.7.2</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>sshj-0.8.1</artifactId>
-      <version>6.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>sts-2.0.2</artifactId>
       <version>6.0.0</version>
     </dependency>
     <dependency>
