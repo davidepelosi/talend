@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -20,13 +20,13 @@ public class DataQuality {
 
     /**
      * getTitle: Returns the extracted title based on a list of titles provided
-     * 
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mrs. Marty Smith") name: the string to be processed
-     * 
+     *
      * {example} getTitle(" Mrs. Marty Smith ", 1) # returns "Mrs."
      */
     public static String getTitle(String name) {
@@ -35,13 +35,13 @@ public class DataQuality {
 
     /**
      * getNameWithoutTitle: Returns the string without the title
-     * 
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mrs. Marty Smith") name: the string to be processed
-     * 
+     *
      * {example} getNameWithoutTitle(" Mrs. Marty Smith ", 1) # returns "Marty Smith"
      */
     public static String getNameWithoutTitle(String name) {
@@ -50,13 +50,13 @@ public class DataQuality {
 
     /**
      * getNameWithoutSuffix: Returns the string without the suffix
-     * 
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mr. Marty Smith III") name: the string to be processed
-     * 
+     *
      * {example} getNameWithoutSuffix(" Mr. Marty Smith III", 1) # returns "Mr. Marty Smith"
      */
     public static String getNameWithoutSuffix(String name) {
@@ -65,13 +65,13 @@ public class DataQuality {
 
     /**
      * getLastName: Returns only LastName value from the string
-     * 
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mrs. Marty Smith III") name: the string to be processed
-     * 
+     *
      * {example} getLastName(" Mrs. Marty Smith III", 1) # returns "Smith"
      */
     public static String getLastName(String name) {
@@ -80,13 +80,13 @@ public class DataQuality {
 
     /**
      * getCleansedLastName: Returns the string without the title and suffix
-     * 
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mrs. Marty Smith III") name: the string to be processed
-     * 
+     *
      * {example} getCleansedLastName(" Mrs. Marty Smith III", 1) # returns "Marty Smith"
      */
     public static String getCleansedLastName(String name) {
@@ -95,13 +95,13 @@ public class DataQuality {
 
     /**
      * isValidName: Returns true or false if the string is a valid formed name: [Initial] Firstname [Initial] Lastname
-     * 
+     *
      * {talendTypes} Boolean
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mrs. Marty Smith") name: the string to be processed
-     * 
+     *
      * {example} isValidName("Mrs. Marty Smith ") # returns true
      */
     public static Boolean isValidName(String name) {

@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -23,16 +23,24 @@ import java.io.PushbackInputStream;
 import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
+
 
 /**
  * created by talend on 2016-04-08 Detailled comment.
@@ -42,33 +50,63 @@ public class DataMasking {
 
     static final String ALGO = "AES"; //$NON-NLS-1$
 
+    static final String GCMALGO = "AES/GCM/NoPadding"; //$NON-NLS-1$
+
     static final String UNICODE_FORMAT = "UTF8"; //$NON-NLS-1$
 
     static final String DES_ENCRYPTION_SCHEME = "DES"; //$NON-NLS-1$
+
+    private static final int DEFAULT_IV_LENGTH = 16;
 
     public static final String NULL_PARAMETER_MESSAGE = "The parameter should not be null"; //$NON-NLS-1$
 
     public static final String EMPTY_PARAMETER_MESSAGE = "String is empty"; //$NON-NLS-1$
 
-    static final Random random = new Random();
+    private static final String KEY_GEN_ALGO = "PBKDF2WithHmacSHA256"; //$NON-NLS-1$
+
+    static final Random random = new SecureRandom();
 
     static final BASE64Encoder b64Encoder = new DataMasking().new BASE64Encoder();
 
     static final BASE64Decoder b64Dencoder = new DataMasking().new BASE64Decoder();
 
+    public static final Function<byte[], String> BASE64_ENCODER = bytes -> Base64.getEncoder().encodeToString(bytes);
+
+    public static final Function<byte[], byte[]> BASE64_DECODER = bytes -> Base64.getDecoder().decode(bytes);
+
+    public static class DataMaskingRoutineException extends RuntimeException {
+
+        private static final long serialVersionUID = -8622896150657449668L;
+
+        public DataMaskingRoutineException() {
+            super();
+        }
+
+        public DataMaskingRoutineException(String s) {
+            super(s);
+        }
+
+        public DataMaskingRoutineException(String s, Object o) {
+            super(s);
+            System.out.println(o);
+        }
+
+    }
+
     /**
      * createMD2: Calculate MD2 hash value from String.
-     * 
-     * 
+     * warning: this is not considered a secure function.
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} string("foo") message: The string need to be masked.
-     * 
+     *
      * {example} createMD2("foo") return is d11f8ce29210b4b50c5e67533b699d02
-     * 
-     * 
+     *
+     *
      */
     public static String createMD2(String message) {
         if (message == null) {
@@ -98,16 +136,17 @@ public class DataMasking {
 
     /**
      * createMD5: Calculate MD5 hash value from String.
-     * 
-     * 
+     * warning: this is not considered a secure function.
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} string("foo") message: The string need to be masked.
-     * 
+     *
      * {example} createMD5("foo") result is acbd18db4cc2f85cedef654fccc4a4d8
-     * 
+     *
      */
 
     public static String createMD5(String message) {
@@ -140,18 +179,18 @@ public class DataMasking {
 
     /**
      * CreditCard Masking: Masks a 16 digit credit card number with a defined character from 5th to 12th place.
-     * 
-     * 
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} string("0123456789012345") ccnum: The string needs to be masked.
-     * 
+     *
      * {param} string("*") maskingChar: The masking Character.
-     * 
+     *
      * {example} maskCreditCardNumber("0123456789012345","*") result is 0123********2345
-     * 
+     *
      */
 
     public static String maskCreditCardNumber(String ccnum, String maskingChar) {
@@ -178,16 +217,16 @@ public class DataMasking {
 
     /**
      * Random String: Create a random String of defined length.
-     * 
-     * 
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} int(5) valueLength: The length of the string.
-     * 
+     *
      * {example} createRandomString(5) result maybe is "1auA5","11uyd" or "A1c8j"
-     * 
+     *
      */
 
     public static String createRandomString(int valueLength) {
@@ -197,19 +236,19 @@ public class DataMasking {
 
     /**
      * Random String: Create a random String of defined length.
-     * 
-     * 
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} int(5) valueLength: The length of the string.
-     * 
+     *
      * {param} String("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890") allowedChars: The Sting which
      * the chacter of random string get from.
-     * 
+     *
      * {example} createRandomString(5,"a") result must be "aaaaa"
-     * 
+     *
      */
 
     public static String createRandomString(int valueLength, String allowedChars) {
@@ -221,13 +260,13 @@ public class DataMasking {
         if (valueLength == 0) {
             return "Length of valueLength must be greater than 0"; //$NON-NLS-1$
         } else {
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder builder = new StringBuilder();
             int maxChar = allowedChars.length();
             int i = 0;
             for (i = 0; i <= valueLength - 1; i++) {
                 int value = random.nextInt(maxChar);
-                buffer.append(allowedChars.charAt(value));
-                rdString = buffer.toString();
+                builder.append(allowedChars.charAt(value));
+                rdString = builder.toString();
             }
             return rdString;
         }
@@ -235,21 +274,27 @@ public class DataMasking {
 
     /**
      * Encrypt String: Encrypts a string using AES 128 .
-     * 
-     * 
+     * warning: this is not considered a secure function.
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} String("foo") encryptString: The string to be encrypted.
      * 
-     * {param} byte[]({ 'T', 'a', 'l', 'e', 'n', 'd', 's', 'S', 'e', 'c', 'r', 'e', 't', 'K', 'e', 'y' }) keyValue: the
+     * {param} byte[](new byte[] { 'T', 'a', 'l', 'e', 'n', 'd', 's', 'S', 'e', 'c', 'r', 'e', 't', 'K', 'e', 'y' })
+     * keyValue: the
      * key material of the secret key. The contents of the array are copied to protect against subsequent modification.
      * 
-     * {example} encryptAES("foo") result is UQ0VJZq5ymFkMYQeDrPi0A==
+     * {example} encryptAES("foo", new byte[] { 'T', 'a', 'l', 'e', 'n', 'd', 's', 'S', 'e', 'c', 'r', 'e', 't', 'K', 'e', 'y' })
+     * result is UQ0VJZq5ymFkMYQeDrPi0A==
+     *
+     * @deprecated use {@link #encryptAESGCM(String, String, int)} instead of it
      * 
      */
 
+    @Deprecated
     public static String encryptAES(String encryptString, byte[] keyValue) {
 
         if (encryptString == null || keyValue == null) {
@@ -267,27 +312,92 @@ public class DataMasking {
             return encryptedValue;
 
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage(), e);
+            throw new DataMaskingRoutineException(e.getMessage(), e);
         }
     }
 
+
     /**
-     * Encrypt String: Decrypts a string using AES 128.
-     * 
+     * Encrypt String: Encrypts a string using AES GCM 128 .
      * 
      * {talendTypes} String
      * 
      * {Category} Data Masking
      * 
-     * {param} String("foo") encryptedString: The string to be encrypted.
+     * {param} String("foo") encryptString: The string to be encrypted.
      * 
-     * {param} byte[]("foo") keyValue: the key material of the secret key. The contents of the array are copied to
-     * protect against subsequent modification.
+     * {param} String("TalendMainKey123") the main key used to encrypt the data.
      * 
-     * {example} decryptAES("UQ0VJZq5ymFkMYQeDrPi0A==") result is "foo"
+     * {example} encryptAESGCM("foo","TalendMainKey123") result could be
+     * +ngs4RohAx8OvInmioRwRYS0pymcNkQJCKqsdUPZqUZppN4= (but it should change from an execution to another).
      * 
      */
 
+    public static String encryptAESGCM(String encryptString, String mainKey) {
+
+        return encryptAESGCM(encryptString, mainKey, DEFAULT_IV_LENGTH);
+    }
+
+    /**
+     * Encrypt String: Encrypts a string using AES GCM 128 .
+     * 
+     * {talendTypes} String
+     * 
+     * {Category} Data Masking
+     * 
+     * {param} String("foo") encryptString: The string to be encrypted.
+     * 
+     * {param} String("TalendMainKey123") the main key used to encrypt the data.
+     * 
+     * {param} int the length of initializationVector. must be one of 12/13/14/15/16.
+     * 
+     * {example} encryptAESGCM("foo","TalendMainKey123",16) result could be
+     * +ngs4RohAx8OvInmioRwRYS0pymcNkQJCKqsdUPZqUZppN4= (but it should change from an execution to another).
+     * 
+     */
+
+    public static String encryptAESGCM(String encryptString, String mainKey, int ivLength) {
+
+        if (encryptString == null || mainKey == null) {
+            return NULL_PARAMETER_MESSAGE;
+        }
+
+        if (encryptString.length() == 0) {
+            return EMPTY_PARAMETER_MESSAGE;
+        }
+
+        try {
+            return encrypt(encryptString, mainKey, ivLength);
+        } catch (Exception e) {
+            throw new DataMaskingRoutineException(e.getMessage(), e);
+        }
+    }
+
+
+
+    /**
+     * decrypt String: Decrypts a string using AES 128.
+     * warning: this is not considered a secure function.
+     *
+     *
+     * {talendTypes} String
+     *
+     * {Category} Data Masking
+     *
+     * {param} String("UQ0VJZq5ymFkMYQeDrPi0A==") encryptedString: The string to be decrypted.
+     *
+     * {param} byte[](new byte[] { 'T', 'a', 'l', 'e', 'n', 'd', 's', 'S', 'e', 'c', 'r', 'e', 't', 'K', 'e', 'y' })
+     * keyValue: the key material of the secret key. The contents of the array are copied to protect against subsequent
+     * modification.
+     * 
+     * {example} decryptAES("UQ0VJZq5ymFkMYQeDrPi0A==",new byte[] { 'T', 'a', 'l', 'e', 'n', 'd', 's', 'S', 'e', 'c', 'r', 'e', 't', 'K', 'e', 'y' })
+     * result is "foo"
+     * 
+     * @deprecated use {@link #decryptAESGCM(String, String, int)} instead of it
+     * 
+     */
+
+    @Deprecated
     public static String decryptAES(String encryptedString, byte[] keyValue) {
 
         if (encryptedString == null || keyValue == null) {
@@ -307,24 +417,83 @@ public class DataMasking {
             return decryptedValue;
 
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage(), e);
+            throw new DataMaskingRoutineException(e.getMessage(), e);
         }
     }
 
     /**
-     * Encrypt String: Encrypts a string using DES .
-     * 
+     * decrypt String: Decrypts a string using AES GCM 128.
      * 
      * {talendTypes} String
      * 
      * {Category} Data Masking
      * 
+     * {param} String("+ngs4RohAx8OvInmioRwRYS0pymcNkQJCKqsdUPZqUZppN4=") encryptedString: The string to be decrypted.
+     * 
+     * {param} String("TalendMainKey123") the main key used to decrypt the data.
+     * 
+     * {param} int the length of initializationVector. must be one of 12/13/14/15/16.
+     * 
+     * {example} decryptAESGCM("+ngs4RohAx8OvInmioRwRYS0pymcNkQJCKqsdUPZqUZppN4=","TalendMainKey123",16) result
+     * is "foo"
+     * 
+     */
+
+    public static String decryptAESGCM(String encryptedString, String mainKey, int ivLength) {
+
+        if (encryptedString == null || mainKey == null) {
+            return NULL_PARAMETER_MESSAGE;
+        }
+
+        if (encryptedString.length() == 0) {
+            return EMPTY_PARAMETER_MESSAGE;
+        }
+
+        try {
+            return decrypt(encryptedString, mainKey, ivLength);
+
+        } catch (Exception e) {
+            throw new DataMaskingRoutineException(e.getMessage(), e);
+        }
+
+    }
+
+    /**
+     * decrypt String: Decrypts a string using AES GCM 128.
+     * 
+     * {talendTypes} String
+     * 
+     * {Category} Data Masking
+     * 
+     * {param} String("+ngs4RohAx8OvInmioRwRYS0pymcNkQJCKqsdUPZqUZppN4=") encryptedString: The string to be decrypted.
+     * 
+     * {param} String("TalendMainKey123") the main key used to decrypt the data.
+     * 
+     * {example} decryptAESGCM("+ngs4RohAx8OvInmioRwRYS0pymcNkQJCKqsdUPZqUZppN4=","TalendMainKey123") result
+     * is "foo"
+     * 
+     */
+
+    public static String decryptAESGCM(String encryptedString, String mainKey) {
+
+        return decryptAESGCM(encryptedString, mainKey, DEFAULT_IV_LENGTH);
+    }
+
+    /**
+     * Encrypt String: Encrypts a string using DES .
+     * warning: this is not considered a secure function.
+     *
+     *
+     * {talendTypes} String
+     *
+     * {Category} Data Masking
+     *
      * {param} String("foo") unencryptedString: The string to be encrypted.
-     * 
+     *
      * {param} String("ThisIsSecretEncryptionKey") myEncryptionKey: the string with the DES key material.
-     * 
+     *
      * {example} encryptDES("foo") result is DmNj+x2LUXA=
-     * 
+     *
      * @throws Exception
      */
 
@@ -354,25 +523,26 @@ public class DataMasking {
             return encryptedString;
 
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new DataMaskingRoutineException(e.getMessage());
         }
 
     }
 
     /**
      * Decrypt String: Decrypts a string using DES .
-     * 
-     * 
+     * warning: this is not considered a secure function.
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} String("DmNj+x2LUXA=") encryptedString: the string with the DES key material.
-     * 
+     *
      * {param} String("ThisIsSecretEncryptionKey") myDecryptionKey: The string to be encrypted.
-     * 
+     *
      * {example} decryptDES("DmNj+x2LUXA=") result is "foo"
-     * 
+     *
      */
 
     public static String decryptDES(String encryptedString, String myDecryptionKey) {
@@ -400,15 +570,15 @@ public class DataMasking {
             byte[] encryptedText = b64Dencoder.decodeBuffer(encryptedString);
             byte[] plainText = decipher.doFinal(encryptedText);
 
-            StringBuffer stringBuffer = new StringBuffer();
+            StringBuilder stringBuilder = new StringBuilder();
             for (byte element : plainText) {
-                stringBuffer.append((char) element);
+                stringBuilder.append((char) element);
             }
-            decryptedText = stringBuffer.toString();
+            decryptedText = stringBuilder.toString();
             return decryptedText;
 
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage(), e);
+            throw new DataMaskingRoutineException(e.getMessage(), e);
         }
 
     }
@@ -416,19 +586,19 @@ public class DataMasking {
     /**
      * Blurring ADD: Adds a random value from a certain range to an Integer value. Make new value random around the
      * input number
-     * 
+     *
      * {talendTypes} integer
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} int(1) basevalue: Any return value will base this value.
-     * 
+     *
      * {param} int(5) rangefrom: Minimum value which make basevalue changed.It could be a positive integer or negative
      * integer
-     * 
+     *
      * {param} int(10) rangeto: Maximum value which make basevalue changed.It could be a positive integer or negative
      * integer.
-     * 
+     *
      * {example}
      * blurNumber(1,5,10) result is between [6,11)
      * blurNumber(1,10,5) result is between [6,11)
@@ -444,18 +614,18 @@ public class DataMasking {
     /**
      * Blurring ADD: Adds a random value from a certain range to an long value. Make new value random around the input
      * number
-     * 
-     * 
+     *
+     *
      * {talendTypes} long
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} long(1) basevalue: Any return value will around this value.
-     * 
+     *
      * {param} int(5) rangefrom: Minimum value which make basevalue changed.It must be a positive integer.
-     * 
+     *
      * {param} int(10) rangeto: Maximum value which make basevalue changed.It must be a positive integer.
-     * 
+     *
      * {example}
      * blurNumber(1,5,10) # returns any long between [6,11)
      * blurNumber(1,10,5) # returns any long between [6,11)
@@ -469,22 +639,22 @@ public class DataMasking {
     /**
      * Blurring ADD: Adds a random value from a certain range to an double value. Make new value random around the input
      * number
-     * 
-     * 
+     *
+     *
      * {talendTypes} double
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} double(1.5d) basevalue: Any return value will around this value.
-     * 
+     *
      * {param} int(5) rangefrom: Minimum value which make basevalue changed.It must be a positive integer.
-     * 
+     *
      * {param} int(10) rangeto: Maximum value which make basevalue changed.It must be a positive integer.
-     * 
+     *
      * {example}
      * blurNumber(1.5,5,10) # returns any double between [6.5,11.5)
      * blurNumber(1.5,10,5) # returns any double between [6.5,11.5)
-     * 
+     *
      */
     public static double blurNumber(double basevalue, int rangefrom, int rangeto) {
         double range = 1.0 * (rangeto - rangefrom);
@@ -495,22 +665,22 @@ public class DataMasking {
     /**
      * Blurring ADD: Adds a random value from a certain range to an float value. Make new value random around the input
      * number
-     * 
-     * 
+     *
+     *
      * {talendTypes} float
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} float(1.5) basevalue: Any return value will around this value.
-     * 
+     *
      * {param} int(5) rangefrom: Minimum value which make basevalue changed.It must be a positive integer.
-     * 
+     *
      * {param} int(10) rangeto: Maximum value which make basevalue changed.It must be a positive integer.
-     * 
+     *
      * {example}
      * blurNumber(1.5,5,10) # returns any integer between [6.5,11.5)
      * blurNumber(1.5,10,5) # returns any integer between [6.5,11.5)
-     * 
+     *
      */
     public static float blurNumber(float basevalue, int rangefrom, int rangeto) {
         float range = 1.0f * (rangeto - rangefrom);
@@ -520,16 +690,16 @@ public class DataMasking {
 
     /**
      * IP-Adress Masking: creates a random ip-address.
-     * 
-     * 
+     *
+     *
      * {talendTypes} string
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} Empty
-     * 
+     *
      * {example} createIPAddress() result maybe is 192.168.33.111
-     * 
+     *
      */
 
     public static String createIPAddress() {
@@ -552,16 +722,16 @@ public class DataMasking {
 
     /**
      * IP-Adress Masking with Domain: creates a random ip-address while keeping the domain part of the ip-address.
-     * 
-     * 
+     *
+     *
      * {talendTypes} string
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} String("192.168.33.111") It should be a full IP address.
-     * 
+     *
      * {example} createIPAddressKeepDomain("192.168.33.111") result maybe is "192.168.77.213"
-     * 
+     *
      */
 
     public static String createIPAddressKeepDomain(String inputval) {
@@ -588,18 +758,18 @@ public class DataMasking {
 
     /**
      * Random Date (fromYear,toYear: Returns a random date as String .
-     * 
-     * 
+     *
+     *
      * {talendTypes}
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} int(1900) yearFrom: Start year of range
-     * 
+     *
      * {param} int(2012) yearTo: end year of range
-     * 
+     *
      * {example} createRandomDate(1900,2012) result should be in the range [1900,2099]
-     * 
+     *
      */
 
     public static String createRandomDate(int yearFrom, int yearTo) {
@@ -632,16 +802,16 @@ public class DataMasking {
 
     /**
      * Default Masking (Set_DefaultValue: Returns a default value as String) .
-     * 
-     * 
+     *
+     *
      * {talendTypes}
-     * 
+     *
      * {Category} Data Masking
-     * 
+     *
      * {param} String("foo") value: The value which should be default one.
-     * 
+     *
      * {example} setDefaultValue("foo") result is "foo"
-     * 
+     *
      */
 
     public static String setDefaultValue(String value) {
@@ -689,8 +859,9 @@ public class DataMasking {
         protected int readFully(InputStream inputstream, byte abyte0[]) throws IOException {
             for (int i = 0; i < abyte0.length; i++) {
                 int j = inputstream.read();
-                if (j == -1)
+                if (j == -1) {
                     return i;
+                }
                 abyte0[i] = (byte) j;
             }
 
@@ -702,17 +873,21 @@ public class DataMasking {
             encodeBufferPrefix(outputstream);
             do {
                 int j = readFully(inputstream, abyte0);
-                if (j == 0)
+                if (j == 0) {
                     break;
+                }
                 encodeLinePrefix(outputstream, j);
-                for (int i = 0; i < j; i += bytesPerAtom())
-                    if (i + bytesPerAtom() <= j)
+                for (int i = 0; i < j; i += bytesPerAtom()) {
+                    if (i + bytesPerAtom() <= j) {
                         encodeAtom(outputstream, abyte0, i, bytesPerAtom());
-                    else
+                    } else {
                         encodeAtom(outputstream, abyte0, i, j - i);
+                    }
+                }
 
-                if (j < bytesPerLine())
+                if (j < bytesPerLine()) {
                     break;
+                }
                 encodeLineSuffix(outputstream);
             } while (true);
             encodeBufferSuffix(outputstream);
@@ -723,7 +898,7 @@ public class DataMasking {
             ByteArrayInputStream bytearrayinputstream = new ByteArrayInputStream(abyte0);
             String s = null;
             try {
-                encode(((InputStream) (bytearrayinputstream)), ((OutputStream) (bytearrayoutputstream)));
+                encode(bytearrayinputstream, bytearrayoutputstream);
                 s = bytearrayoutputstream.toString("8859_1"); //$NON-NLS-1$
             } catch (Exception exception) {
                 throw new Error("ChracterEncoder::encodeBuffer internal error"); //$NON-NLS-1$
@@ -737,14 +912,17 @@ public class DataMasking {
         public BASE64Encoder() {
         }
 
+        @Override
         protected int bytesPerAtom() {
             return 3;
         }
 
+        @Override
         protected int bytesPerLine() {
             return 57;
         }
 
+        @Override
         protected void encodeAtom(OutputStream outputstream, byte abyte0[], int i, int j) throws IOException {
             if (j == 1) {
                 byte byte0 = abyte0[i];
@@ -809,8 +987,9 @@ public class DataMasking {
                 throws IOException {
             for (int i = 0; i < paramInt2; i++) {
                 int j = paramInputStream.read();
-                if (j == -1)
+                if (j == -1) {
                     return i == 0 ? -1 : i;
+                }
                 paramArrayOfByte[(i + paramInt1)] = (byte) j;
             }
             return paramInt2;
@@ -839,10 +1018,11 @@ public class DataMasking {
                     decodeLineSuffix(localPushbackInputStream, paramOutputStream);
                 } while (true);
             } catch (IOException e) {
-                if (e.getMessage().equals("CEStreamExhausted")) //$NON-NLS-1$
+                if (e.getMessage().equals("CEStreamExhausted")) { //$NON-NLS-1$
                     decodeBufferSuffix(localPushbackInputStream, paramOutputStream);
-                else
+                } else {
                     throw e;
+                }
             }
         }
 
@@ -864,20 +1044,24 @@ public class DataMasking {
     private static final byte[] pem_convert_array = new byte[256];
 
     static {
-        for (int i = 0; i < 255; i++)
+        for (int i = 0; i < 255; i++) {
             pem_convert_array[i] = -1;
-        for (int i = 0; i < pem_array.length; i++)
+        }
+        for (int i = 0; i < pem_array.length; i++) {
             pem_convert_array[pem_array[i]] = (byte) i;
+        }
     }
 
     private class BASE64Decoder extends CharacterDecoder {
 
         byte[] decode_buffer = new byte[4];
 
+        @Override
         protected int bytesPerAtom() {
             return 4;
         }
 
+        @Override
         protected int bytesPerLine() {
             return 72;
         }
@@ -958,4 +1142,82 @@ public class DataMasking {
             super(paramString);
         }
     }
+
+    private static synchronized byte[] generateInitializationVector(int length) {
+        byte[] randomKey = new byte[length];
+        new SecureRandom().nextBytes(randomKey);
+        return randomKey;
+    }
+
+
+    /**
+     * @return A {@link Cipher} using AES/GCM/NoPadding encryption.
+     */
+    private static Cipher getAesGcmCipher(int encryptMode, String mainKey, byte[] initializationVector)
+            throws Exception {
+        int ivLength = initializationVector.length;
+        if (Stream.of(12, 13, 14, 15, 16).noneMatch(i -> i == ivLength)) {
+            throw new IllegalArgumentException("Invalid IV length"); //$NON-NLS-1$
+        }
+        final Cipher cipher = Cipher.getInstance(GCMALGO);
+        SecretKey key = new SecretKeySpec(generateSecretKeyFromPassword(mainKey, mainKey.length()), ALGO);
+        final GCMParameterSpec spec = new GCMParameterSpec(ivLength * 8, initializationVector);
+        cipher.init(encryptMode, key, spec);
+        return cipher;
+    }
+
+    /**
+     * This method generates a secret Key using the key-stretching algorithm PBKDF2 of
+     * <a href="https://docs.oracle.com/javase/7/docs/api/javax/crypto/package-summary.html">javax.crypto</a>.
+     * It is basically a hashing algorithm slow by design, in order to increase the time
+     * required for an attacker to try a lot of passwords in a bruteforce attack.
+     * <br>
+     * About the salt :
+     * <ul>
+     * <li>The salt is not secret, the use of Random is not critical and ensure determinism.</li>
+     * <li>The salt is important to avoid rainbow table attacks.</li>
+     * <li>The salt should be generated with SecureRandom() in case the passwords are stored.</li>
+     * <li>In that case the salt should be stored in plaintext next to the password and a unique user identifier.</li>
+     * </ul>
+     *
+     * @param password a password given as a {@code String}.
+     * @param keyLength key length to generate
+     * @return a {@code SecretKey} securely generated.
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     */
+    private static byte[] generateSecretKeyFromPassword(String password, int keyLength)
+            throws NoSuchAlgorithmException, InvalidKeySpecException {
+        byte[] salt = new byte[keyLength];
+        new Random(password.hashCode()).nextBytes(salt);
+        SecretKeyFactory factory = SecretKeyFactory.getInstance(KEY_GEN_ALGO);
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, keyLength << 3);
+        return factory.generateSecret(spec).getEncoded();
+    }
+
+    private static String encrypt(String data, String mainKey, int ivLength) throws Exception {
+        final byte[] dataBytes = data.getBytes(UNICODE_FORMAT);
+        byte[] initializationVector = generateInitializationVector(ivLength);
+        final Cipher cipher = getAesGcmCipher(Cipher.ENCRYPT_MODE, mainKey, initializationVector);
+
+        final byte[] encryptedData = cipher.doFinal(dataBytes);
+        final byte[] encryptedBytes = new byte[encryptedData.length + ivLength];
+        System.arraycopy(initializationVector, 0, encryptedBytes, 0, ivLength);
+        System.arraycopy(encryptedData, 0, encryptedBytes, ivLength, encryptedData.length);
+
+        return BASE64_ENCODER.apply(encryptedBytes);
+    }
+
+
+    private static String decrypt(String data, String mainKey, int ivLength) throws Exception {
+        final byte[] encryptedBytes = BASE64_DECODER.apply(data.getBytes(UNICODE_FORMAT));
+
+        final byte[] initializationVector = new byte[ivLength];
+        System.arraycopy(encryptedBytes, 0, initializationVector, 0, ivLength);
+
+        final Cipher cipher = getAesGcmCipher(Cipher.DECRYPT_MODE, mainKey, initializationVector);
+        return new String(cipher.doFinal(encryptedBytes, ivLength, encryptedBytes.length - ivLength),
+                UNICODE_FORMAT);
+    }
+
 }

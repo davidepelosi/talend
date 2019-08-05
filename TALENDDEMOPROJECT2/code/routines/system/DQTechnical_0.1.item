@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -23,15 +23,15 @@ public class DQTechnical {
 
     /**
      * extractTitle: Returns the extracted title based on a list of titles provided
-     * 
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mrs. Marty Smith") inStr: the string to be processed
-     * 
+     *
      * {param} int(1) trimSpaces: 0 or 1 to trim spaces or not
-     * 
+     *
      * {example} extractTitle(" Mrs. Marty Smith ", 1) # returns "Mrs."
      */
 
@@ -61,15 +61,15 @@ public class DQTechnical {
 
     /**
      * removeTitle: Returns the string without the title
-     * 
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mrs. Marty Smith") inStr: the string to be processed
-     * 
+     *
      * {param} int(1) trimSpaces: 0 or 1 to trim spaces or not
-     * 
+     *
      * {example} removeTitle(" Mrs. Marty Smith ", 1) # returns "Mrs."
      */
 
@@ -99,15 +99,15 @@ public class DQTechnical {
 
     /**
      * extractLastName: Returns the string without the title
-     * 
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mrs. Marty Smith") inStr: the string to be processed
-     * 
+     *
      * {param} int(1) trimSpaces: 0 or 1 to trim spaces or not
-     * 
+     *
      * {example} extractLastName(" Mrs. Marty Smith ", 1) # returns "Smith"
      */
 
@@ -136,15 +136,15 @@ public class DQTechnical {
 
     /**
      * removeNameSuffix: Returns the string without the suffix
-     * 
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mr. Marty Smith III") inStr: the string to be processed
-     * 
+     *
      * {param} int(1) trimSpaces: 0 or 1 to trim spaces or not
-     * 
+     *
      * {example} removeNameSuffix(" Mr. Marty Smith III", 1) # returns "Mr. Marty Smith"
      */
 
@@ -174,13 +174,13 @@ public class DQTechnical {
     /**
      * isNameStringValid: Returns true or false if the string is a valid formed name: [Initial] Firstname [Initial]
      * Lastname
-     * 
+     *
      * {talendTypes} Boolean
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("Mrs. Marty Smith") inStr: the string to be processed
-     * 
+     *
      * {example} isNameStringValid("Mrs. Marty Smith ") # returns true
      */
 

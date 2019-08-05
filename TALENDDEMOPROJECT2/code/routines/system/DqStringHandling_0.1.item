@@ -1,6 +1,6 @@
 // ============================================================================
 //
-// Copyright (C) 2006-2018 Talend Inc. - www.talend.com
+// Copyright (C) 2006-2019 Talend Inc. - www.talend.com
 //
 // This source code is available under agreement available at
 // %InstallDIR%\features\org.talend.rcp.branding.%PRODUCTNAME%\%PRODUCTNAME%license.txt
@@ -26,14 +26,14 @@ public class DqStringHandling {
     /**
      * containsOnlyInitials: return true if the given string only contains initials such as "A", "A.", "A.I." or
      * "A.I.D.S",.
-     * 
-     * 
+     *
+     *
      * {talendTypes} Boolean
-     * 
+     *
      * {Category} User Defined
-     * 
+     *
      * {param} string("A.I.D.S") str: The string that will be checked for initials
-     * 
+     *
      * {example} containsOnlyInitials("A.I.D.S.") # true.
      */
     public static boolean containsOnlyInitials(String str) {
@@ -46,14 +46,14 @@ public class DqStringHandling {
 
     /**
      * makeSafe: returns an empty string when the given string is null.
-     * 
-     * 
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("world") str: The string to make safe.
-     * 
+     *
      * {example} makeSafe("world") # world.
      */
     public static String makeSafe(String str) {
@@ -62,14 +62,14 @@ public class DqStringHandling {
 
     /**
      * safeTrim: returns the trimmed string or the empty string when the string is null.
-     * 
-     * 
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("world") str: The string to trim (can be null).
-     * 
+     *
      * {example} safeTrim("  world  ") # world.
      */
     public static String safeTrim(String str) {
@@ -79,18 +79,18 @@ public class DqStringHandling {
     /**
      * safeConcat: returns the concatenation of the trimmed strings. The separator character is used when none of the
      * given strings is empty or null.
-     * 
-     * 
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} string("hello") str1: The string to concatenate (can be null).
-     * 
+     *
      * {param} string("world") str2: The string to concatenate (can be null).
-     * 
+     *
      * {param} char('|') separator: the separator to be used in the concatenation of the strings
-     * 
+     *
      * {example} safeConcat("hello ","  world  ", '!') # hello|world.
      */
     public static String safeConcat(String str1, String str2, char separator) {
@@ -109,16 +109,16 @@ public class DqStringHandling {
      * safeConcatMerge: returns the concatenation of the trimmed and unique strings. The separator character is used
      * when none of the given strings is empty or null. If two strings are the same, only one is concatenated. The order
      * of the output does may be different from the input order.
-     * 
-     * 
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} char('|') separator: the separator to be used in the concatenation of the strings
-     * 
+     *
      * {param} strings("hello","world") strings: The string to concatenate (can be null).
-     * 
+     *
      * {example} safeConcat( '|', "hello ","  world  ", "world") # hello|world.
      */
     public static String safeConcatMerge(char separator, String... strings) {
@@ -141,16 +141,16 @@ public class DqStringHandling {
     /**
      * safeConcat: returns the concatenation of the trimmed strings. The separator character is used when none of the
      * given strings is empty or null.
-     * 
-     * 
+     *
+     *
      * {talendTypes} String
-     * 
+     *
      * {Category} Data Quality
-     * 
+     *
      * {param} char("|") separator: the separator to be used in the concatenation of the strings
-     * 
+     *
      * {param} strings("hello","world") strings: The string to concatenate (can be null).
-     * 
+     *
      * {example} safeConcat( '|', "hello ","  world  ") # hello|world.
      */
     public static String safeConcat(char separator, String... strings) {
@@ -167,13 +167,13 @@ public class DqStringHandling {
 
     /**
      * validAscii: validate the ascii format or not
-     * 
+     *
      * {talendTypes} boolean
-     * 
+     *
      * {Category} User Defined
-     * 
+     *
      * {param} string("text") text: The text to validate.
-     * 
+     *
      * {example} validAscii("text") # true
      */
     public static boolean validAscii(String text) {
