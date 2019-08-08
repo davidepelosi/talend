@@ -91,10 +91,6 @@
     "type" : "job"
   },
   "relatedItems" : [ {
-    "id" : "Cloudera_CDH6_2_0_dynamic_20190808034935391_0200",
-    "version" : "Latest",
-    "type" : "dynamicDistribution"
-  }, {
     "id" : "DQTechnical",
     "version" : "Latest",
     "type" : "routine"
