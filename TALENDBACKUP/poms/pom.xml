@@ -8,6 +8,9 @@
   <packaging>pom</packaging>
   <name>TALENDBACKUP Codes Master</name>
   <url>http://www.talend.org/</url>
+  <modules>
+    <module>code/routines</module>
+  </modules>
   <properties>
     <signer.version>7.2.1</signer.version>
     <talend.project.name>TALENDBACKUP</talend.project.name>
