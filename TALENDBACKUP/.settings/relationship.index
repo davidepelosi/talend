@@ -99,10 +99,6 @@
     "version" : "Latest",
     "type" : "dynamicDistribution"
   }, {
-    "id" : "_4YShgLmHEem2zb8Gsig8Mw",
-    "version" : "Latest",
-    "type" : "property"
-  }, {
     "id" : "DQTechnical",
     "version" : "Latest",
     "type" : "routine"
