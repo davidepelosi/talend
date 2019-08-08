@@ -1,1 +1,12 @@
-[ ]
+[ {
+  "baseItem" : {
+    "id" : "_9P44sLl-Eem2zb8Gsig8Mw",
+    "version" : "0.1",
+    "type" : "hadoopCluster"
+  },
+  "relatedItems" : [ {
+    "id" : "Cloudera_CDH6_2_0_dynamic_20190808034935391_0200",
+    "version" : "Latest",
+    "type" : "dynamicDistribution"
+  } ]
+} ]
