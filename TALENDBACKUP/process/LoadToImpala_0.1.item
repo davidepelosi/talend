@@ -109,49 +109,8 @@
     <routinesParameter id="_i_4lELl9Eem2zb8Gsig8Mw" name="TalendString"/>
     <routinesParameter id="_i_-EoLl9Eem2zb8Gsig8Mw" name="TalendStringUtil"/>
   </parameters>
-  <node componentName="tImpalaLoad" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="320" posY="352">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tImpalaLoad_1"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_4YShgLmHEem2zb8Gsig8Mw"/>
-    <elementParameter field="TEXT" name="TYPE" show="false" value="IMPALA"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
-    <elementParameter field="CLOSED_LIST" name="IMPALA_VERSION" value="Cloudera_CDH6_2_0_dynamic_20190808034935391_0200"/>
-    <elementParameter field="HADOOP_DISTRIBUTION" name="IMPALA" value=""/>
-    <elementParameter field="HADOOP_JARS_DIALOG" name="HADOOP_CUSTOM_JARS" show="false" value=""/>
-    <elementParameter field="CHECK" name="USE_YARN" show="false" value="false"/>
-    <elementParameter field="CLOSED_LIST" name="IMPALA_DRIVER" value="HIVE2"/>
-    <elementParameter field="TEXT" name="HOST" value="&quot;35.158.140.136&quot;"/>
-    <elementParameter field="TEXT" name="PORT" value="&quot;21050&quot;"/>
-    <elementParameter field="TEXT" name="DBNAME" value="&quot;default&quot;"/>
-    <elementParameter field="TEXT" name="USER" value="&quot;admin&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" show="false" value="0RMsyjmybrE="/>
-    <elementParameter field="TEXT" name="IMPALA_ADDITIONAL_JDBC" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="USE_KRB" value="false"/>
-    <elementParameter field="TEXT" name="IMPALA_PRINCIPAL" show="false" value="&quot;impala/_HOST@EXAMPLE.COM&quot;"/>
-    <elementParameter field="CHECK" name="USE_KEYTAB" show="false" value="false"/>
-    <elementParameter field="TEXT" name="PRINCIPAL" show="false" value="&quot;hive&quot;"/>
-    <elementParameter field="FILE" name="KEYTAB_PATH" show="false" value="&quot;/tmp/hive.keytab&quot;"/>
-    <elementParameter field="CHECK" name="USE_SSL" value="false"/>
-    <elementParameter field="FILE" name="SSL_TRUST_STORE" show="false" value="&quot;/home/usr1/ssl/trust_store.jks&quot;"/>
-    <elementParameter field="PASSWORD" name="SSL_TRUST_STORE_PASSWORD" show="false" value="crKjNM+/KPoSQfCGt+RqAg=="/>
-    <elementParameter field="CLOSED_LIST" name="LOAD_ACTION" value="LOAD"/>
-    <elementParameter field="CLOSED_LIST" name="TARGET" show="false" value="TABLE"/>
-    <elementParameter field="TEXT" name="FILEPATH" value="&quot;C:/data/vdl/Marketing Customer Contacts US.csv&quot;"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;customer&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CLOSED_LIST" name="FILE_ACTION" value="OVERWRITE"/>
-    <elementParameter field="CHECK" name="LOCAL" show="false" value="false"/>
-    <elementParameter field="CHECK" name="SET_PARTITIONS" value="false"/>
-    <elementParameter field="TEXT" name="PARTITION" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="CREATE_IF_NOT_EXIST" show="false" value="false"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="AWS_CDH62_Impala"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-  </node>
   <node componentName="tHDFSInput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="160" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tHDFSInput_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_6nP7ILmBEem2zb8Gsig8Mw"/>
     <elementParameter field="HADOOP_LIBRARIES" name="HDFS" show="false" value=""/>
@@ -205,7 +164,6 @@
   </node>
   <node componentName="tImpalaOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="416" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tImpalaOutput_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_4YShgLmHEem2zb8Gsig8Mw"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="IMPALA"/>
@@ -242,26 +200,20 @@
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tHDFSInput_1" offsetLabelX="0" offsetLabelY="0" source="tHDFSInput_1" target="tImpalaOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tImpalaLoad_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
-  </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tHDFSInput_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_5c3c7f3e-ea94-4e42-9fb5-aa6536ece5f9"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>q4N2Sd+fAgItMSVb+4n45VgQddtRWrR+cbF+GJ3llh+mSRIXbHL2D6AvueGhkvGUzzbw//5DTZE7
-EugBD4sI0w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_76b2fe5f-7532-41d2-aa35-f9b16f6aa44d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Ii0IJbak0NA7OdJYi9MqLVfbMnzZ9gVtZvpa9NLk8MkD8SNe4Qt7ACs9zSDzqQ46mDXJA9yGhhg/
-77obYYtACA==</DigestValue></Reference></SignedInfo><SignatureValue>iwRsJqOMNmdSQcpf67vEKxlxiXbhJniDHFA+kbUGbWkG88nGRXesnJYOEVflkU1s3htK911G6R0G
-Grv7gPC6JOHWkHbMBBd0QcWFMGuYk7Y6wlYpgK2bxWLpLQJFGwjkBv2ueuzFu83qsQQOL2GPNZxk
-JoMHucrnlRFGcrmgfkriVUpmHoOuI61rocR39ZMMrUF47dQK8pXGk0ON197ql+X+a4x8TACVnrH1
-AB6m5I8psL6l08nJxurGS/F+OSxgVa3nYvvgAMQKs3YW2j4fBcJoLopJ5wnQlhKqO3V4TjfG3tq9
-gsibYvUjj29BClxLUanYJlkkWCHEFatifk0/mQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_c9b4e28f-7564-49b1-a762-e30ca4842cd7"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>vyYlOMw9PyEANFu7z7n07Tk5lbw4g2Pc533m2XG6IMhnja378RCevscKi8Z/OpTQMIN1mwCUgbkL
+700yKvSAcA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_06553270-e9d5-424f-8f96-1a67d25b8d3e"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>LfBy/qqOvmv1hPH4qCE88I6/iW/5uOnvCQrRMjaMgkP2Ih7LKnUTYWrr1MxLWjkj/Gxg9p3kIPQk
+ljr2nx/1ag==</DigestValue></Reference></SignedInfo><SignatureValue>Qm9wnPGD+czAeJI/fPpqh9u/mouz6C4v17oj1cxyeaIihHihWXJ8mdg5Rn4rbn3hf+t3ruFXcHJa
+NIUz/Wk8wXOTOPP+vXkvA0KNZ9DsD0+0fSVYMMzyoBXB+mC7zrBFCsOXl+vi++cKGKbURSf2in0+
+IPB5uU8akuKZTTo6ADrDnm35rjNlzpD+NMKFXCQGqqM4GAg07zklHOu2/s0LqdbtQOBEvrsd1RlC
+0+/+f2DYYz+NlvmCeCpJ6Np5PXJhkjUvJhecgaoTvULnxUocz7mWAK+LSeWY8OBlx9a4E7BoeKsk
+C3q1Wv/xsbEp7wcVWI0PQ5A+oXo8N20iHfQXrA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U
@@ -283,4 +235,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_76b2fe5f-7532-41d2-aa35-f9b16f6aa44d" Target="#_5c3c7f3e-ea94-4e42-9fb5-aa6536ece5f9"><Timestamp>2019-08-08 03:48:22</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_06553270-e9d5-424f-8f96-1a67d25b8d3e" Target="#_c9b4e28f-7564-49b1-a762-e30ca4842cd7"><Timestamp>2019-08-08 03:52:47</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
