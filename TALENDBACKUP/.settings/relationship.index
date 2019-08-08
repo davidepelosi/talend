@@ -162,10 +162,6 @@
     "id" : "TalendStringUtil",
     "version" : "Latest",
     "type" : "routine"
-  }, {
-    "id" : "_wnZtMLmJEem2zb8Gsig8Mw - metadata",
-    "version" : "Latest",
-    "type" : "schema"
   } ]
 }, {
   "baseItem" : {
