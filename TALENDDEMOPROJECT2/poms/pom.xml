@@ -13,6 +13,17 @@
     <module>jobs/process/testproject_0.1</module>
     <module>jobs/process/fcamonitor_0.1</module>
     <module>jobs/process/fcamonitorwithdelay_0.1</module>
+    <module>jobs/process_mr/Fraud_Transactions/step2_adls_sync_0.1</module>
+    <module>jobs/process/Fraud_Transactions/step1a_push_files_adls_bi_0.1</module>
+    <module>jobs/process/Fraud_Transactions/Step0_Setup/step0_main_0.1</module>
+    <module>jobs/process/Fraud_Transactions/Step0_Setup/delete_salesforce_data_0.1</module>
+    <module>jobs/process/Fraud_Transactions/Step0_Setup/step0bis_main_skip_salesforce_0.1</module>
+    <module>jobs/process/Fraud_Transactions/Step0_Setup/populate_mysql_database_0.1</module>
+    <module>jobs/process/Fraud_Transactions/step1b_fetch_crm_from_salesforce_0.1</module>
+    <module>jobs/process/Fraud_Transactions/Step0_Setup/mysql_pii_check_0.1</module>
+    <module>jobs/process/Fraud_Transactions/Step0_Setup/populate_salesforce_0.1</module>
+    <module>jobs/process_storm/Fraud_Transactions/step4_streaming_fraud_scoring_0.1</module>
+    <module>jobs/process/Fraud_Transactions/step3_run_notebook_build_model_0.1</module>
   </modules>
   <properties>
     <signer.version>7.2.1</signer.version>
