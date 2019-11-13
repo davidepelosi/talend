@@ -1,5 +1,16 @@
 [ {
   "baseItem" : {
+    "id" : "_9pZywAYbEeqQh6NdAP8FTg",
+    "version" : "0.1",
+    "type" : "hadoopCluster"
+  },
+  "relatedItems" : [ {
+    "id" : "Cloudera_CDH6_3_0_dynamic_20191113140237963_0100",
+    "version" : "Latest",
+    "type" : "dynamicDistribution"
+  } ]
+}, {
+  "baseItem" : {
     "id" : "_QKNNUGZ8EeWm5YvsrIoYzQ",
     "version" : "0.1",
     "type" : "job"

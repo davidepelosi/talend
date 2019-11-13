@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><xmi:XMI xmlns:xmi="http://www.omg.org/XMI" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.relational="http:///orgomg/cwm/resource/relational.ecore" xmi:version="2.0">
+  <TalendMetadata:DatabaseConnection DatabaseType="HBase" DbmsId="mysql_id" Port="2181" ProductId="HBASE" SID="HBase" ServerName="ip-172-31-12-74.eu-central-1.compute.internal" Username="dpelosi" dataPackage="_suDPjgYcEeqQh6NdAP8FTg" xmi:id="_suDPcAYcEeqQh6NdAP8FTg">
+    <parameters key="CONN_PARA_KEY_DB_PORT" value="2181" xmi:id="_suDPcQYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_USE_YARN" value="true" xmi:id="_suDPcgYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_RESOURCEMANAGER_SCHEDULER_ADDRESS" value="ip-172-31-12-74.eu-central-1.compute.internal:8030" xmi:id="_suDPcwYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_USE_CUSTOM_CONFS" value="true" xmi:id="_suDPdAYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_NAME_NODE_URL" value="hdfs://ip-172-31-12-74.eu-central-1.compute.internal:8020" xmi:id="_suDPdQYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_USERNAME" value="dpelosi" xmi:id="_suDPdgYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_HADOOP_CLUSTER_ID" value="_9pZywAYbEeqQh6NdAP8FTg" xmi:id="_suDPdwYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_JOB_HISTORY_PRINCIPAL" value="mapred/_HOST@EXAMPLE.COM" xmi:id="_suDPeAYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_HBASE_VERSION" value="Cloudera_CDH6_3_0_dynamic_20191113140237963_0100" xmi:id="_suDPeQYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_JOB_TRACKER_URL" value="ip-172-31-12-74.eu-central-1.compute.internal:8032" xmi:id="_suDPegYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_JOBHISTORY_ADDRESS" value="ip-172-31-12-74.eu-central-1.compute.internal:10020" xmi:id="_suDPewYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_HIVE_VERSION" value="Cloudera_CDH6_3_0_dynamic_20191113140237963_0100" xmi:id="_suDPfAYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_HBASE_ZNODE_PARENT" value="/hbase" xmi:id="_suDPfQYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_USE_DATANODE_HOSTNAME" value="true" xmi:id="_suDPfgYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_DB_SERVER" value="ip-172-31-12-74.eu-central-1.compute.internal" xmi:id="_suDPfwYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_DB_TYPE" value="HBase" xmi:id="_suDPgAYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_MAPRDB_AUTHENTICATION_USE_MAPRTICKET" value="false" xmi:id="_suDPgQYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_JOB_TRACKER_PRINCIPAL" value="yarn/_HOST@EXAMPLE.COM" xmi:id="_suDPggYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_HIVE_DISTRIBUTION" value="CLOUDERA" xmi:id="_suDPgwYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_MAPRDB_VERSION" value="Cloudera_CDH6_3_0_dynamic_20191113140237963_0100" xmi:id="_suDPhAYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_MAPRDB_DISTRIBUTION" value="CLOUDERA" xmi:id="_suDPhQYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_USE_KRB" value="false" xmi:id="_suDPhgYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_HBASE_DISTRIBUTION" value="CLOUDERA" xmi:id="_suDPhwYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_STAGING_DIRECTORY" value="/user" xmi:id="_suDPiAYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_NAME_NODE_PRINCIPAL" value="hdfs/_HOST@EXAMPLE.COM" xmi:id="_suDPiQYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_DB_PRODUCT" value="HBASE" xmi:id="_suDPigYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_HIVE_AUTHENTICATION_USE_MAPRTICKET" value="false" xmi:id="_suDPiwYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_HBASE_SET_ZNODE_PARENT" value="true" xmi:id="_suDPjAYcEeqQh6NdAP8FTg"/>
+    <parameters key="CONN_PARA_KEY_HBASE_AUTHENTICATION_USE_MAPRTICKET" value="false" xmi:id="_suDPjQYcEeqQh6NdAP8FTg"/>
+  </TalendMetadata:DatabaseConnection>
+  <orgomg.cwm.resource.relational:Catalog dataManager="_suDPcAYcEeqQh6NdAP8FTg" name="HBase" xmi:id="_suDPjgYcEeqQh6NdAP8FTg"/>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_cd955a07-319d-41cc-a328-32bb3661cea0"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>fKWnqyFVNV22g3pO+1WxqgWTgsAEqfezF9MqsCakZo2VZsmNF1mZwz0Mu9EJ1KZH7JQgd95mSWPa
+/CeYmnoacA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_bd7f9ba1-9b80-4dd1-bb8f-fb83567faaa4"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>R5Jl986V3D6Q44vkcIJ1pbR0BXJvUI5pB/7sWMv4wqmWUGEdJahtubIlou1B6oW5RaO7QFb7+XeO
+iLWCnJrzlQ==</DigestValue></Reference></SignedInfo><SignatureValue>Lm+RBfQR+2iLfIOIDTnbM89+/VbcXJxXHWqvbk9SqiQTn1ds5MPeqhjPZz9aXwFuAoYlb5vDugBs
+J7DWtdsgXgfRkdljO3hFjbC8zHtnfAnkP+kgkhyawVEwKDMh2zyQDWXBycgXCwimUf0JXys0obdc
+oeCo9uoAGtSukB+0oddHy7Cj2La+TBvnX5K40+TyxxgIHbAY/R8768aLwRdU+OjCQ6YhsqOthZfY
+76nEsvzgX0zc+5Tas8fLvjMnD1vLlIUkOZMleoHXObHB+QlGdd7sLKTHPqFywn4F1l85oeadNm/y
+SJYnjL7UXYblIEFRMjDLVJ5EOe+ctDXfbydtzQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w
+DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD
+VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5
+QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U
+YWxlbmQgQ29kZSBTaWduaW5nIGNlcnRpZmljYXRlMQwwCgYDVQQLDANSJkQxFDASBgNVBAoTC1Rh
+bGVuZCBJbmMuMQ4wDAYDVQQHEwVQYXJpczEOMAwGA1UECBMFUGFyaXMxCzAJBgNVBAYTAkZSMIIB
+IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp5TMF8BmRt8dY51t9kIDdDkoOKVVytJN2gn2
+DhMGi8hzpUofNDykJDhe9SPqyJdGZ6o/h7laTA0/CivKyPT1OJQ9E2gMHKs8cTZM/cO2w0Atlqkl
+alIxepol0DNnUtmECVBqdnVsJesfmdoeptxgJAtxYbquFsTsrATNY2cscXpwmOca/Ewip48WQLFx
+e5s067jaIsAQGRIqpIup3bOtWBySrtImJ40lQCPeEcl96qzkv3utaVaNc3ukkhYkCDbMbK8NVd1B
+CVeeIBAe+n/SdpHH20o+6eIiZecsBGDLwlTYrFvuVqAa6xI7y8Vdz6irjPAVBEtG/iOc782aJ/lZ
+TwIDAQABo3UwczAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEAwIHgDATBgNVHSUEDDAKBggrBgEF
+BQcDAzAdBgNVHQ4EFgQUGdfzQEbjQnANq28sfhEMTx+rsOcwHwYDVR0jBBgwFoAU530Lcvy1gZnG
+gCvZLOyCczK1qPcwDQYJKoZIhvcNAQELBQADggIBAEr22wnaQwZm2dhbUCqD+qZpTq2AF/tzxqAM
+eL/CiTjPbTblS4SNNwCKvTgMe9ucpUbenXmK7xE+DU9dN4om+t3VHbkOLQVyuLcd2WGsy7ZGwRvA
+f+TFwLbwjyTukOGm6Sd1qyZgvCPzBsKnft6vscvGy2yEpmFCeHJyBP8pvchg607zguRdNbkGYZXw
+G6jNipAbTtzdPTFKKr1bEf0sUGqMrlZIMPjflh2Vewu8ImNdX5IZdvBD6DdFVOC5wqV6u+W9ukE/
+mXZxDBYNl2AF7FTh04ucEVN3mHv7m2L0uFvUlhxchcagJhJsdQG+A0LVCemHbp6CSNQJx02KxqUG
+hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/
+WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW
+gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+
+qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_bd7f9ba1-9b80-4dd1-bb8f-fb83567faaa4" Target="#_cd955a07-319d-41cc-a328-32bb3661cea0"><Timestamp>2019-11-13 13:51:31</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></xmi:XMI>
