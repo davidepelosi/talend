@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:TalendProperties="http://www.talend.org/properties">
+  <TalendProperties:Project xmi:id="_wh7DUQYUEeqbDuDHc0NyPQ" label="MLSandbox" description="MLSandbox porting to Talend Cloud" language="java" technicalLabel="MLSANDBOX" author="_wh7DUgYUEeqbDuDHc0NyPQ" productVersion="Talend Cloud Real-Time Big Data Platform-7.2.1.20190711_1240" url="{&quot;location&quot;:&quot;https://github.com/davidepelosi/talend&quot;,&quot;settings&quot;:&quot;000&quot;,&quot;storage&quot;:&quot;git&quot;}" type="DQ" bigData="false">
+    <migrationTask xmi:id="_wx2VsAYUEeqbDuDHc0NyPQ" id="org.talend.repository.model.migration.CheckProductVersionMigrationTask" breaks="7.1.0" version="7.1.1"/>
+  </TalendProperties:Project>
+  <TalendProperties:User xmi:id="_wh7DUgYUEeqbDuDHc0NyPQ" login="dpelosi@se.emerging.talend.com" firstName="Davide" lastName="Pelosi" type="DQ"/>
+</xmi:XMI>
