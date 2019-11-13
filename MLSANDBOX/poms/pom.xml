@@ -12,6 +12,33 @@
     <module>code/routines</module>
     <module>jobs/process/demo/onboardingdemojob_0.1</module>
     <module>jobs/process_mr/IoTPredictiveMaintenance/test_bd_0.1</module>
+    <module>jobs/process_mr/RealTimeRiskAssessmentEngine/step_02_train_marketingcampaigndata_0.1</module>
+    <module>jobs/process_mr/RecommendationEngine/Sub_Steps/preparemoviedata_0.1</module>
+    <module>jobs/process_mr/RealTimeRiskAssessmentEngine/step_02bis_test_marketingcampaigndata_0.1</module>
+    <module>jobs/process_mr/IoTPredictiveMaintenance/step_02_train_predictivemaintenance_0.1</module>
+    <module>jobs/process_mr/IoTPredictiveMaintenance/step_02bis_test_predictivemaintenance_0.1</module>
+    <module>jobs/process/RecommendationEngine/A_Setup/step_99_deletenewratings_0.1</module>
+    <module>jobs/process/RecommendationEngine/B_Model/Sub_Steps/stagemodel_0.1</module>
+    <module>jobs/process_mr/Warehouse_Optimization/step_01_generate_monthlyreport_0.1</module>
+    <module>jobs/process_storm/RecommendationEngine/D_Streaming/step_04a_recommendationstream_0.1</module>
+    <module>jobs/process/RecommendationEngine/C_Services/step_03c_recommendationsservice_0.1</module>
+    <module>jobs/process/RecommendationEngine/C_Services/step_03a_moviesservice_0.1</module>
+    <module>jobs/process/RecommendationEngine/C_Services/step_03b_ratingsservice_0.1</module>
+    <module>jobs/process/RecommendationEngine/B_Model/step_06_retrainmodel_0.1</module>
+    <module>jobs/process_mr/IoTPredictiveMaintenance/step_03_predictmachinesmaintenance_0.1</module>
+    <module>jobs/process_storm/RealTimeRiskAssessmentEngine/step_03_realtimeconversionprediction_0.1</module>
+    <module>jobs/process/IoTPredictiveMaintenance/step_04_webservice_0.1</module>
+    <module>jobs/process/RecommendationEngine/A_Setup/step_01_environmentsetup_0.1</module>
+    <module>jobs/process/RealTimeRiskAssessmentEngine/step_05_loginservice_0.1</module>
+    <module>jobs/process_mr/Warehouse_Optimization/step_02_month_over_month_comparison_0.1</module>
+    <module>jobs/process/RealTimeRiskAssessmentEngine/step_01_setupmarketingcampaignsenv_0.1</module>
+    <module>jobs/process/IoTPredictiveMaintenance/step_01_setupenvironment_0.1</module>
+    <module>jobs/process/RecommendationEngine/B_Model/Sub_Steps/deletemodel_0.1</module>
+    <module>jobs/process/Warehouse_Optimization/step_03_googlechart_product_by_unit_0.1</module>
+    <module>jobs/process/RecommendationEngine/B_Model/step_02_trainmodel_0.1</module>
+    <module>jobs/process_mr/RecommendationEngine/Sub_Steps/train_0.1</module>
+    <module>jobs/process_mr/RecommendationEngine/Sub_Steps/retrain_0.1</module>
+    <module>jobs/process/RealTimeRiskAssessmentEngine/step_04_adservice_0.1</module>
   </modules>
   <properties>
     <signer.version>7.2.1</signer.version>
