@@ -1187,7 +1187,11 @@
     "type" : "job"
   },
   "relatedItems" : [ {
-    "id" : "_tTgmMMLUEeaMxfmMbINAdg",
+    "id" : "Cloudera_CDH6_3_0_dynamic_20191113140237963_0100",
+    "version" : "Latest",
+    "type" : "dynamicDistribution"
+  }, {
+    "id" : "_stz-4AYcEeqQh6NdAP8FTg",
     "version" : "Latest",
     "type" : "property"
   }, {
