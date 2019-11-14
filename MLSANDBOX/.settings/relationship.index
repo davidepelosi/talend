@@ -11,6 +11,17 @@
   } ]
 }, {
   "baseItem" : {
+    "id" : "_KC78MAbVEeqMt_92pz9FIA",
+    "version" : "0.1",
+    "type" : "hadoopCluster"
+  },
+  "relatedItems" : [ {
+    "id" : "Cloudera_CDH6_3_0_dynamic_20191113140237963_0100",
+    "version" : "Latest",
+    "type" : "dynamicDistribution"
+  } ]
+}, {
+  "baseItem" : {
     "id" : "_0lt6YMYHEearLI18q3rrNA",
     "version" : "0.1",
     "type" : "job"
